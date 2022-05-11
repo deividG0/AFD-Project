@@ -1,34 +1,27 @@
 import sys
 
 class Aresta:
+
+    # Classe Aresta com atributos de letra da transição, vértice de inicio e vértice de fim
+
     def __init__(self, letter, inicio, fim):
         self.letter = letter
         self.inicio = inicio
         self.fim = fim
 
 class Vertice:
+
+    # Classe Vertice com atributos de dado (nome do estado), se é inicial e se é final.
+
     isInitial = False
     isFinal = False
 
     def __init__(self, dado):
-        self.arestasSaida = []
-        self.arestasEntrada = []
         self.dado = dado
 
-    def adicionarArestaEntrada(self, aresta):
-        self.arestasEntrada.append(aresta)
-
-    def adicionarArestaSaida(self, aresta):
-        self.arestasSaida.append(aresta)
-
-    def getArestasSaida(self):
-        return self.arestasSaida
-
-    def getArestasEntrada(self):
-        return self.arestasEntrada
-
-
 class Grafo:
+
+    # Classe Grafo com atributos de lista de vertices, listas de arestas e vertice inicial.
 
     def __init__(self):
         self.verticeInitial = None
@@ -65,6 +58,11 @@ class Grafo:
                 v.isFinal = True
                 break
 
+    # O método isRecognized() é o método responsável por ler uma nova palavra e identificar se ela é reconhecida pelo AFD
+    # O loop interno inicia no estado inicial e com a primeira letra da palavra lida
+    # e passa para o próximo estado caso encontre uma transição com essa letra
+    # Caso uma transição não seja encontrada o AFD iria para o estado de erro, ou seja, o resultado da palavra é "N"
+
     def isRecognized(self, word):
         currentState = self.verticeInitial
         letterIndex = 0
@@ -98,70 +96,44 @@ if __name__ == '__main__':
     word = ''
     words = []
     out = sys.stdout
-    # grafo.adicionarVertice("0")
-    # grafo.adicionarVertice("1")
-    #
-    # grafo.adicionarAresta("a", "0", "1")
-    # grafo.adicionarAresta("a", "1", "1")
-    # grafo.adicionarAresta("b", "1", "1")
-    #
-    # grafo.setInitial("0")
-    #
-    # grafo.setFinal("1")
-    #
-    # palavra = sys.stdin.readline()
-    # print(grafo.isRecognized(palavra.rstrip()))
-
-    # text = sys.stdin.read(1)
 
     # Entrada de estados
-    #print('ESTADOS: ')
     estados = sys.stdin.readline()
     for s in estados.rstrip():
         if s != ' ':
-            #print(s)
             grafo.adicionarVertice(s)
 
     # Entrada do alfabeto
-    #print('ALFABETO: ')
     alfabeto = sys.stdin.readline()
     for a in alfabeto:
         if a != ' ':
             alfabeto = alfabeto + a
 
     # Entrada do numero de transicoes
-    #print('N TRANSICOES: ')
     n_transicoes = sys.stdin.read(1)
 
     # Entrada transicoes
-    #print('TRANSICOES: ')
     n = 0
     while n < int(n_transicoes):
         transicoes = sys.stdin.readline()
         if transicoes.rstrip() != '':
-            #print(transicoes.rstrip())
             n = n + 1
-            #print('{}, {}, {}', transicoes[2], transicoes[0], transicoes[4])
             grafo.adicionarAresta(transicoes[2], transicoes[0], transicoes[4])
 
     # Entrada do estado inicial
-    #print('ESTADO INICIAL: ')
     estado_inicial = sys.stdin.readline()
     grafo.setInitial(estado_inicial.rstrip())
 
     # Entrada de estados finais
-    #print('ESTADOS FINAIS: ')
     estados_finais = sys.stdin.readline()
     for s in estados_finais.rstrip():
         if s != ' ':
             grafo.setFinal(s)
 
     # Entrada das palavras
-    #print('PALAVRAS: ')
     palavras = sys.stdin.readline()
     cont = 0
     for p in palavras.rstrip():
-        #print(f'{p}')
         if p != ' ':
             word = word + p
         else:
@@ -172,8 +144,6 @@ if __name__ == '__main__':
 
         if cont == len(palavras.rstrip()):
             words.append(word)
-
-    #print(words)
 
     for w in words:
         out.write(grafo.isRecognized(w) + '\n')
