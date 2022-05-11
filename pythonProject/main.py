@@ -1,44 +1,34 @@
 import sys
 
-
 class Aresta:
     def __init__(self, letter, inicio, fim):
         self.letter = letter
         self.inicio = inicio
         self.fim = fim
 
-
 class Vertice:
     isInitial = False
     isFinal = False
 
     def __init__(self, dado):
-        # self.arestasSaida = []
-        # self.arestasEntrada = []
         self.arestasSaida = []
         self.arestasEntrada = []
         self.dado = dado
 
     def adicionarArestaEntrada(self, aresta):
-        # self.arestasEntrada.append(aresta)
         self.arestasEntrada.append(aresta)
 
     def adicionarArestaSaida(self, aresta):
-        # self.arestasSaida.append(aresta)
         self.arestasSaida.append(aresta)
 
     def getArestasSaida(self):
-        # return self.arestasSaida
         return self.arestasSaida
 
     def getArestasEntrada(self):
-        # return self.arestasEntrada
         return self.arestasEntrada
 
 
 class Grafo:
-
-    # verticeInitial = Vertice
 
     def __init__(self):
         self.verticeInitial = None
@@ -56,14 +46,6 @@ class Grafo:
         aresta = Aresta(letter, inicio, fim)
 
         self.arestas.append(aresta)
-
-        # a = fim.getArestasSaida
-        # inicio.adicionarArestaSaida(aresta)
-        # fim.arestasSaida = a
-
-        # b = inicio.getArestasEntrada
-        # fim.adicionarArestaEntrada(aresta)
-        # inicio.arestasEntrada = b
 
     def getVertice(self, dado):
         for v in self.vertices:
@@ -195,14 +177,3 @@ if __name__ == '__main__':
 
     for w in words:
         out.write(grafo.isRecognized(w) + '\n')
-
-    # text2 = sys.stdin.readline()
-
-    # for line in text:
-    #     # Remove trailing newline characters using strip()
-    #     line.
-    #     if 'exit' == line.strip():
-    #         print('Found exit. Terminating the program')
-    #         exit(0)
-    #     else:
-    #         print('Message from sys.stdin: ---> {} <---'.format(line))
