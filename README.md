@@ -1,6 +1,7 @@
 # AFD-Project
 
 Aluno: Deivid Gomes Silva
+-
 Mat.: 2018106335
 
 O algoritmo se encontra no arquivo main.py dentro da pasta pythonProject e contém comentários nas partes principais do algoritmo.
