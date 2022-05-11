@@ -61,7 +61,7 @@ class Grafo:
     # O método isRecognized() é o método responsável por ler uma nova palavra e identificar se ela é reconhecida pelo AFD
     # O loop interno inicia no estado inicial e com a primeira letra da palavra lida
     # e passa para o próximo estado caso encontre uma transição com essa letra
-    # Caso uma transição não seja encontrada o AFD iria para o estado de erro, ou seja, o resultado da palavra é "N"
+    # Caso nenhuma transição não seja encontrada o AFD iria para o estado de erro, ou seja, o resultado da palavra é "N"
 
     def isRecognized(self, word):
         currentState = self.verticeInitial
